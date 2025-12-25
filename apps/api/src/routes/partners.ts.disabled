@@ -1,0 +1,229 @@
+import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import { prisma } from '@packages/db'
+import { authenticate } from '../middleware/auth.js'
+
+interface PartnerResponse {
+  id: string;
+  name: string;
+  slug: string;
+  logoUrl?: string | null;
+  websiteUrl?: string | null;
+  description?: string | null;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export default async function partnersRoutes(fastify: FastifyInstance) {
+  // Get all partners
+  fastify.get(
+    '/',
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const partners = await prisma.partner.findMany({
+          where: { isActive: true },
+          orderBy: { createdAt: 'asc' }
+        })
+
+        return reply.send(partners)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+
+  // Get all partners for admin (including inactive)
+  fastify.get(
+    '/admin',
+    {
+      preHandler: [authenticate]
+    },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const user = request.user as any
+        if (!user.roles.includes('ADMIN')) {
+          return reply.status(403).send({
+            error: 'Admin access required'
+          })
+        }
+
+        const partners = await prisma.partner.findMany({
+          orderBy: { createdAt: 'asc' }
+        })
+
+        return reply.send(partners)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+
+  // Get partner by ID
+  fastify.get<{ Params: { id: string } }>(
+    '/:id',
+    async (request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) => {
+      try {
+        const { id } = request.params
+
+        const partner = await prisma.partner.findUnique({
+          where: { id, isActive: true }
+        })
+
+        if (!partner) {
+          return reply.status(404).send({
+            error: 'Partner not found'
+          })
+        }
+
+        return reply.send(partner)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+
+  // Get partner by slug
+  fastify.get<{ Params: { slug: string } }>(
+    '/slug/:slug',
+    async (request: FastifyRequest<{ Params: { slug: string } }>, reply: FastifyReply) => {
+      try {
+        const { slug } = request.params
+
+        const partner = await prisma.partner.findUnique({
+          where: { slug, isActive: true }
+        })
+
+        if (!partner) {
+          return reply.status(404).send({
+            error: 'Partner not found'
+          })
+        }
+
+        return reply.send(partner)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+
+  // Create partner (admin only)
+  fastify.post(
+    '/',
+    {
+      preHandler: [authenticate]
+    },
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const user = request.user as any
+        if (!user.roles.includes('ADMIN')) {
+          return reply.status(403).send({
+            error: 'Admin access required'
+          })
+        }
+
+        const partnerData = request.body as Partial<PartnerResponse>
+
+        const partner = await prisma.partner.create({
+          data: {
+            name: partnerData.name!,
+            slug: partnerData.slug!,
+            logoUrl: partnerData.logoUrl,
+            websiteUrl: partnerData.websiteUrl,
+            description: partnerData.description,
+            isActive: partnerData.isActive ?? true
+          }
+        })
+
+        return reply.status(201).send(partner)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+
+  // Update partner (admin only)
+  fastify.put<{ Params: { id: string } }>(
+    '/:id',
+    {
+      preHandler: [authenticate]
+    },
+    async (request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) => {
+      try {
+        const user = request.user as any
+        if (!user.roles.includes('ADMIN')) {
+          return reply.status(403).send({
+            error: 'Admin access required'
+          })
+        }
+
+        const { id } = request.params
+        const updateData = request.body as Partial<PartnerResponse>
+
+        const partner = await prisma.partner.update({
+          where: { id },
+          data: {
+            name: updateData.name,
+            slug: updateData.slug,
+            logoUrl: updateData.logoUrl,
+            websiteUrl: updateData.websiteUrl,
+            description: updateData.description,
+            isActive: updateData.isActive
+          }
+        })
+
+        return reply.send(partner)
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+
+  // Delete partner (admin only)
+  fastify.delete<{ Params: { id: string } }>(
+    '/:id',
+    {
+      preHandler: [authenticate]
+    },
+    async (request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) => {
+      try {
+        const user = request.user as any
+        if (!user.roles.includes('ADMIN')) {
+          return reply.status(403).send({
+            error: 'Admin access required'
+          })
+        }
+
+        const { id } = request.params
+
+        await prisma.partner.delete({
+          where: { id }
+        })
+
+        return reply.send({ success: true })
+      } catch (error) {
+        fastify.log.error(error)
+        return reply.status(500).send({
+          error: 'Internal server error'
+        })
+      }
+    }
+  )
+}

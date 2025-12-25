@@ -1,0 +1,181 @@
+/* Optimisations CSS pour améliorer les performances */
+
+/* Réduction des animations complexes */
+* {
+  /* Optimisation des transitions */
+  transition-duration: 150ms !important;
+  transition-timing-function: ease-in-out !important;
+}
+
+/* Optimisation des hover states */
+.hover-optimized {
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.hover-optimized:hover {
+  transform: translateY(-1px);
+}
+
+/* Optimisation des boutons */
+.btn-optimized {
+  transition: all 150ms ease-in-out;
+  will-change: transform, background-color;
+}
+
+.btn-optimized:hover {
+  transform: translateY(-1px);
+}
+
+.btn-optimized:active {
+  transform: translateY(0);
+}
+
+/* Optimisation des cartes */
+.card-optimized {
+  transition: box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
+  will-change: transform, box-shadow;
+}
+
+.card-optimized:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Optimisation des liens */
+.link-optimized {
+  transition: color 150ms ease-in-out;
+  position: relative;
+}
+
+.link-optimized::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 150ms ease-in-out;
+}
+
+.link-optimized:hover::after {
+  width: 100%;
+}
+
+/* Optimisation des images */
+.image-optimized {
+  transition: transform 150ms ease-in-out;
+  will-change: transform;
+}
+
+.image-optimized:hover {
+  transform: scale(1.02);
+}
+
+/* Optimisation des menus */
+.menu-optimized {
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  will-change: opacity, transform;
+}
+
+/* Optimisation des overlays */
+.overlay-optimized {
+  transition: opacity 150ms ease-in-out;
+  will-change: opacity;
+}
+
+/* Optimisation des dropdowns */
+.dropdown-optimized {
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  will-change: opacity, transform;
+}
+
+/* Optimisation des formulaires */
+.form-optimized input,
+.form-optimized textarea,
+.form-optimized select {
+  transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+}
+
+.form-optimized input:focus,
+.form-optimized textarea:focus,
+.form-optimized select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Optimisation des icônes */
+.icon-optimized {
+  transition: color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.icon-optimized:hover {
+  transform: scale(1.1);
+}
+
+/* Optimisation des animations de chargement */
+.loading-optimized {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Optimisation des scrollbars */
+.scrollbar-optimized {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.scrollbar-optimized::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-optimized::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+.scrollbar-optimized::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.scrollbar-optimized::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Optimisation des performances générales */
+.performance-optimized {
+  /* Force l'accélération matérielle */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimisation des transitions de page */
+.page-transition {
+  transition: opacity 200ms ease-in-out;
+}
+
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+}

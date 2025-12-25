@@ -1,0 +1,106 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              🎯 PROCHAINES ÉTAPES 🎯                                     ║
+║                                                                            ║
+║  Ce qu'il faut faire maintenant                                           ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+✅ ÉTAPE 1: DÉMARRER L'APPLICATION
+═════════════════════════════════════════════════════════════════════════════
+
+Option 1: Double-cliquez sur start-frontend-backend-simple.bat (Recommandé)
+  1. Double-cliquez sur le fichier
+  2. Attendez que les deux fenêtres s'ouvrent
+  3. Le frontend démarre sur http://localhost:3001
+  4. Le backend démarre sur un port à déterminer
+
+Option 2: Utilisez la ligne de commande
+  1. Ouvrez le terminal à la racine du projet
+  2. Exécutez: pnpm dev
+  3. Le frontend démarre sur http://localhost:3001
+
+
+✅ ÉTAPE 2: ACCÉDER AU FRONTEND
+═════════════════════════════════════════════════════════════════════════════
+
+1. Ouvrez votre navigateur
+2. Accédez à: http://localhost:3001
+3. Vous devriez voir la page de login
+
+
+✅ ÉTAPE 3: SE CONNECTER
+═════════════════════════════════════════════════════════════════════════════
+
+1. Email: admin@aspc-ci.org
+2. Mot de passe: Admin123!
+3. Cliquez sur "Se connecter"
+
+
+✅ ÉTAPE 4: TESTER L'APPLICATION
+═════════════════════════════════════════════════════════════════════════════
+
+1. Explorez les différentes pages
+2. Testez les fonctionnalités
+3. Vérifiez que tout fonctionne correctement
+
+
+✅ ÉTAPE 5: VÉRIFIER LE BACKEND
+═════════════════════════════════════════════════════════════════════════════
+
+1. Vérifiez que le backend démarre correctement
+2. Notez le port utilisé
+3. Testez les appels API si nécessaire
+
+
+📊 PORTS À VÉRIFIER
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend (Next.js):
+  ✓ Port: 3001
+  ✓ Accès: http://localhost:3001
+
+Backend (Fastify):
+  ? Port: À déterminer (probablement 3000 ou 5000)
+  ? Accès: À déterminer
+
+
+🔐 IDENTIFIANTS DE TEST
+═════════════════════════════════════════════════════════════════════════════
+
+Email: admin@aspc-ci.org
+Mot de passe: Admin123!
+
+
+📁 FICHIERS UTILES
+═════════════════════════════════════════════════════════════════════════════
+
+1. GUIDE_RAPIDE_UTILISATION.txt
+   - Guide d'utilisation rapide
+
+2. DOCUMENTATION_COMPLETE.txt
+   - Documentation complète
+
+3. COMMANDES_DISPONIBLES.txt
+   - Liste de toutes les commandes
+
+4. INDEX_FICHIERS_CREES.txt
+   - Index de tous les fichiers créés
+
+
+🎯 RÉSUMÉ
+═════════════════════════════════════════════════════════════════════════════
+
+1. Double-cliquez sur: start-frontend-backend-simple.bat
+2. Attendez que les deux fenêtres s'ouvrent
+3. Accédez à: http://localhost:3001
+4. Connectez-vous avec les identifiants de test
+5. Testez l'application
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+Créé avec ❤️ pour faciliter le démarrage de l'application
+═════════════════════════════════════════════════════════════════════════════
+

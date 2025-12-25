@@ -1,0 +1,103 @@
+# NGINX Configuration for asp-afrique.com
+# This file is isolated and does not affect other applications on the server
+# INITIAL VERSION - Before SSL certificate installation
+
+# HTTP Server - Redirect to HTTPS (after SSL is installed)
+server {
+    listen 80;
+    listen [::]:80;
+    server_name asp-afrique.com www.asp-afrique.com;
+
+    # Allow Let's Encrypt challenges
+    location /.well-known/acme-challenge/ {
+        root /var/www/html;
+    }
+
+    # Temporary: Serve HTTP until SSL is installed
+    # After SSL installation, Certbot will update this to redirect to HTTPS
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        
+        # Timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # API Backend - Fastify API (port 3004)
+    location /api {
+        proxy_pass http://127.0.0.1:3004;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # CORS headers (if needed)
+        add_header Access-Control-Allow-Origin $http_origin always;
+        add_header Access-Control-Allow-Credentials true always;
+        add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" always;
+        add_header Access-Control-Allow-Headers "Authorization, Content-Type, X-Requested-With" always;
+
+        # Handle preflight requests
+        if ($request_method = OPTIONS) {
+            return 204;
+        }
+
+        # Timeouts for API
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # Static files caching
+    location /_next/static {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_cache_valid 200 60m;
+        add_header Cache-Control "public, max-age=3600, immutable";
+    }
+
+    # Upload directory (if serving files directly)
+    location /uploads {
+        proxy_pass http://127.0.0.1:3004;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # Allow larger uploads
+        client_max_body_size 500M;
+    }
+
+    # Deny access to hidden files
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    # Logging
+    access_log /var/log/nginx/asp-afrique-access.log;
+    error_log /var/log/nginx/asp-afrique-error.log;
+
+    # Max upload size (for file uploads)
+    client_max_body_size 100M;
+}
+
+# HTTPS Server Configuration will be added by Certbot after SSL installation
+# Certbot will automatically add the HTTPS server block and update the HTTP redirect
+
+
+
+
+
+
+

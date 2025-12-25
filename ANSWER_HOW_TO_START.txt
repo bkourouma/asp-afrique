@@ -1,0 +1,84 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              ✅ RÉPONSE: COMMENT DÉMARRER L'APPLICATION ✅               ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+⚡ RÉPONSE RAPIDE (30 SECONDES)
+═════════════════════════════════════════════════════════════════════════════
+
+1. Ouvrir le terminal
+2. Exécuter:
+   $ cd apps/web
+   $ pnpm dev
+3. Ouvrir: http://localhost:3000
+
+C'EST TOUT! ✅
+
+
+🎯 TROIS OPTIONS
+═════════════════════════════════════════════════════════════════════════════
+
+Option 1: Interface Interactive (Recommandé)
+  $ start-app.bat          (Windows Batch)
+  $ .\start-app.ps1        (Windows PowerShell)
+
+Option 2: Frontend Uniquement
+  $ cd apps/web
+  $ pnpm dev
+
+Option 3: Frontend + Backend
+  $ pnpm dev
+
+
+🌐 ACCÈS
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend: http://localhost:3000
+Backend: http://localhost:3001 (si démarré)
+
+
+🔐 IDENTIFIANTS
+═════════════════════════════════════════════════════════════════════════════
+
+Email: admin@aspc-ci.org
+Mot de passe: Admin123!
+
+
+📋 PRÉREQUIS
+═════════════════════════════════════════════════════════════════════════════
+
+✅ Node.js 18+
+✅ pnpm 10.14.0+
+✅ Dépendances installées (pnpm install)
+
+
+📚 DOCUMENTATION
+═════════════════════════════════════════════════════════════════════════════
+
+Démarrage Rapide:
+  → START_APPLICATION.md
+  → QUICK_START_APP.md
+
+Guide Complet:
+  → HOW_TO_START.md
+
+Débogage:
+  → 00_LIRE_MOI_D_ABORD.md
+  → QUICK_START.md
+
+
+🎉 COMMANDE FINALE
+═════════════════════════════════════════════════════════════════════════════
+
+$ cd apps/web && pnpm dev
+
+Puis ouvrez: http://localhost:3000
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+Créé avec ❤️ pour faciliter le démarrage de l'application
+═════════════════════════════════════════════════════════════════════════════
+

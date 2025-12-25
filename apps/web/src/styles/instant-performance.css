@@ -1,0 +1,217 @@
+/* CSS Ultra-Optimisé pour les Interactions Rapides */
+
+/* Optimisation des transitions - Ultra rapides */
+* {
+  transition-duration: 75ms !important;
+  transition-timing-function: ease-out !important;
+}
+
+/* Optimisation des hover states - Instantanés */
+.hover-instant {
+  transition: color 75ms ease-out, background-color 75ms ease-out;
+}
+
+.hover-instant:hover {
+  color: #FF6B35;
+}
+
+/* Optimisation des boutons - Réactivité maximale */
+.btn-instant {
+  transition: all 75ms ease-out;
+  will-change: transform, background-color;
+}
+
+.btn-instant:hover {
+  transform: translateY(-1px);
+}
+
+.btn-instant:active {
+  transform: translateY(0);
+}
+
+/* Optimisation des liens - Navigation instantanée */
+.link-instant {
+  transition: color 75ms ease-out;
+  position: relative;
+}
+
+.link-instant::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 75ms ease-out;
+}
+
+.link-instant:hover::after {
+  width: 100%;
+}
+
+/* Optimisation des menus - Dropdown instantané */
+.menu-instant {
+  transition: opacity 75ms ease-out, transform 75ms ease-out;
+  will-change: opacity, transform;
+}
+
+/* Optimisation des cartes - Hover instantané */
+.card-instant {
+  transition: box-shadow 75ms ease-out, transform 75ms ease-out;
+  will-change: transform, box-shadow;
+}
+
+.card-instant:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Optimisation des icônes - Rotation instantanée */
+.icon-instant {
+  transition: transform 75ms ease-out;
+}
+
+.icon-instant:hover {
+  transform: scale(1.05);
+}
+
+/* Optimisation des formulaires - Focus instantané */
+.form-instant input,
+.form-instant textarea,
+.form-instant select {
+  transition: border-color 75ms ease-out, box-shadow 75ms ease-out;
+}
+
+.form-instant input:focus,
+.form-instant textarea:focus,
+.form-instant select:focus {
+  outline: none;
+  border-color: #FF6B35;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}
+
+/* Optimisation des performances générales */
+.performance-instant {
+  /* Force l'accélération matérielle */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimisation des transitions de page - Ultra rapides */
+.page-instant {
+  transition: opacity 100ms ease-out;
+}
+
+.page-instant-enter {
+  opacity: 0;
+}
+
+.page-instant-enter-active {
+  opacity: 1;
+}
+
+.page-instant-exit {
+  opacity: 1;
+}
+
+.page-instant-exit-active {
+  opacity: 0;
+}
+
+/* Optimisation des scrollbars - Plus fines */
+.scrollbar-instant {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.scrollbar-instant::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-instant::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+.scrollbar-instant::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 2px;
+}
+
+.scrollbar-instant::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Optimisation des animations de chargement - Plus rapides */
+.loading-instant {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Optimisation des états de focus - Accessibilité rapide */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+  transition: outline 75ms ease-out;
+}
+
+/* Optimisation des états actifs - Feedback instantané */
+button:active,
+a:active {
+  transform: scale(0.98);
+  transition: transform 50ms ease-out;
+}
+
+/* Optimisation des états disabled - Transition instantanée */
+button:disabled,
+a:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 75ms ease-out;
+}
+
+/* Optimisation des états hover sur mobile - Désactivation */
+@media (hover: none) {
+  .hover-instant:hover,
+  .btn-instant:hover,
+  .card-instant:hover,
+  .icon-instant:hover {
+    transform: none;
+  }
+}
+
+/* Optimisation pour les appareils à faible puissance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimisation des performances sur mobile */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  .mobile-optimized * {
+    backface-visibility: hidden;
+  }
+}

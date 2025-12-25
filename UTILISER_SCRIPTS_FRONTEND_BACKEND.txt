@@ -1,0 +1,106 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              UTILISER LES SCRIPTS FRONTEND + BACKEND                      ║
+║                                                                            ║
+║  Guide complet pour démarrer le frontend et le backend                    ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+📋 FICHIERS CRÉÉS
+═════════════════════════════════════════════════════════════════════════════
+
+1. start-frontend-backend.bat
+   - Version Batch standard
+   - Crée deux fenêtres séparées
+   - Recommandé pour Windows
+
+2. start-frontend-backend-simple.bat
+   - Version Batch simplifiée
+   - Crée deux fenêtres séparées
+   - Plus facile à utiliser
+
+3. start-frontend-backend.ps1
+   - Version PowerShell
+   - Crée deux fenêtres séparées
+   - Avec couleurs et formatage
+
+
+🚀 COMMENT UTILISER
+═════════════════════════════════════════════════════════════════════════════
+
+Option 1: Utiliser le fichier .bat (Recommandé)
+  1. Double-cliquez sur: start-frontend-backend-simple.bat
+  2. Attendez que les deux fenêtres s'ouvrent
+  3. Le frontend démarre sur http://localhost:3001
+  4. Le backend démarre sur un port à déterminer
+
+Option 2: Utiliser le fichier .ps1 (PowerShell)
+  1. Ouvrez PowerShell
+  2. Exécutez: .\start-frontend-backend.ps1
+  3. Attendez que les deux fenêtres s'ouvrent
+  4. Le frontend démarre sur http://localhost:3001
+  5. Le backend démarre sur un port à déterminer
+
+Option 3: Utiliser la ligne de commande
+  1. Ouvrez le terminal à la racine du projet
+  2. Exécutez: pnpm dev
+  3. Le frontend démarre sur http://localhost:3001
+
+
+📊 PORTS UTILISÉS
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend (Next.js):
+  - Port: 3001 (au lieu de 3000 car il est déjà utilisé)
+  - Accès Local: http://localhost:3001
+  - Accès Network: http://192.168.1.70:3001
+
+Backend (Fastify):
+  - Port: À déterminer (probablement 3000 ou 5000)
+  - Accès: À déterminer
+
+
+🔐 IDENTIFIANTS DE TEST
+═════════════════════════════════════════════════════════════════════════════
+
+Email: admin@aspc-ci.org
+Mot de passe: Admin123!
+
+
+⚠️ PROBLÈME CONNU
+═════════════════════════════════════════════════════════════════════════════
+
+Le port 3000 est déjà en utilisation par le processus 10708 ou 24000.
+Next.js utilise automatiquement le port 3001 à la place.
+
+Pour libérer le port 3000:
+  1. Ouvrez le Gestionnaire des tâches (Ctrl+Shift+Esc)
+  2. Trouvez le processus 10708 ou 24000
+  3. Cliquez droit et sélectionnez "Terminer la tâche"
+  4. Relancez le script
+
+
+📝 NOTES
+═════════════════════════════════════════════════════════════════════════════
+
+- Les deux fenêtres s'ouvrent dans des processus séparés
+- Vous pouvez fermer une fenêtre sans affecter l'autre
+- Pour arrêter les serveurs, fermez les deux fenêtres
+- Les logs s'affichent dans chaque fenêtre
+
+
+🎯 PROCHAINES ÉTAPES
+═════════════════════════════════════════════════════════════════════════════
+
+1. Exécutez le script: start-frontend-backend-simple.bat
+2. Attendez que les deux fenêtres s'ouvrent
+3. Accédez au frontend: http://localhost:3001
+4. Connectez-vous avec les identifiants de test
+5. Testez l'application
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+═════════════════════════════════════════════════════════════════════════════
+

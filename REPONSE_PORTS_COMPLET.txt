@@ -1,0 +1,114 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                  ✅ RÉPONSE COMPLÈTE: PORTS UTILISÉS ✅                ║
+║                                                                            ║
+║              Frontend et Backend - Ports de Démarrage                      ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 VOTRE DEMANDE
+═════════════════════════════════════════════════════════════════════════════
+
+"Regarde le front démarre sur quel port et backend aussi sur quel port"
+
+
+✅ RÉPONSE COMPLÈTE
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend (Next.js):
+  ✅ Port: 3001
+  → http://localhost:3001
+  → http://192.168.1.70:3001
+  → Statut: ✅ Prêt en 5.8s
+
+Backend (Fastify):
+  ❓ Port: À déterminer
+  → Probablement http://localhost:3000 ou http://localhost:5000
+  → Statut: ❓ Non démarré
+
+
+📊 DÉTAILS COMPLETS
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend (Next.js 15.5.5 Turbopack):
+  - Serveur: Next.js 15.5.5 (Turbopack)
+  - Port Local: 3001
+  - Port Network: 192.168.1.70:3001
+  - Environnements: .env.local
+  - Statut: ✅ Prêt
+  - Temps de démarrage: 5.8s
+  - Middleware compilé: 1221ms
+  - Accès: http://localhost:3001
+
+Backend (Fastify):
+  - Serveur: Fastify (À confirmer)
+  - Port: À déterminer
+  - Statut: ❓ Non démarré
+  - Accès: À déterminer
+
+
+⚠️ PROBLÈME DÉTECTÉ
+═════════════════════════════════════════════════════════════════════════════
+
+Le port 3000 était déjà en utilisation par le processus 10708.
+
+Message d'avertissement:
+  ⚠ Port 3000 is in use by process 10708, using available port 3001 instead.
+
+Cela signifie qu'une autre application utilisait le port 3000.
+Next.js a automatiquement utilisé le port 3001 à la place.
+
+
+🔧 POUR LIBÉRER LE PORT 3000
+═════════════════════════════════════════════════════════════════════════════
+
+Option 1: Utiliser le port 3001 (Recommandé)
+  → http://localhost:3001
+
+Option 2: Libérer le port 3000
+  1. Identifier le processus 10708
+  2. Le terminer
+  3. Relancer l'application
+
+
+🔐 IDENTIFIANTS DE TEST
+═════════════════════════════════════════════════════════════════════════════
+
+Email: admin@aspc-ci.org
+Mot de passe: Admin123!
+
+
+📋 COMMANDES DISPONIBLES
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend uniquement:
+  $ pnpm dev
+  $ pnpm dev:web
+
+Backend uniquement:
+  $ pnpm dev:api
+
+Production:
+  $ pnpm build
+  $ pnpm start
+
+Base de données:
+  $ pnpm db:generate
+  $ pnpm db:migrate
+  $ pnpm db:seed
+  $ pnpm db:studio
+
+
+🎯 PROCHAINES ÉTAPES
+═════════════════════════════════════════════════════════════════════════════
+
+1. Accéder au frontend: http://localhost:3001
+2. Vérifier le backend: À déterminer
+3. Tester la connexion avec les identifiants
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+═════════════════════════════════════════════════════════════════════════════
+

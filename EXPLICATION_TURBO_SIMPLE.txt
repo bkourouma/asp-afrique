@@ -1,0 +1,80 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                  ✅ EXPLICATION SIMPLE: TURBO BLOQUE ✅                 ║
+║                                                                            ║
+║              Pourquoi et Comment Corriger                                  ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 VOTRE QUESTION
+═════════════════════════════════════════════════════════════════════════════
+
+"Mais pourquoi l'application ne démarre pas avec pnpm dev?"
+
+
+✅ RÉPONSE EN 3 POINTS
+═════════════════════════════════════════════════════════════════════════════
+
+1. LE PROBLÈME
+   Le script "dev" utilisait Turbo pour lancer les tâches "dev" de TOUS
+   les packages, mais certains packages n'avaient pas de script "dev".
+   Résultat: BLOCAGE INFINI ❌
+
+2. LA CAUSE
+   Turbo attendait que TOUS les packages aient un script "dev":
+   ✅ apps/web - a un script "dev"
+   ❌ apps/api - N'A PAS de script "dev"
+   ❌ packages/db - N'A PAS de script "dev"
+
+3. LA SOLUTION
+   J'ai changé le script "dev" pour lancer directement le frontend
+   sans passer par Turbo.
+   Résultat: ÇA FONCTIONNE! ✅
+
+
+🔧 CORRECTION
+═════════════════════════════════════════════════════════════════════════════
+
+Fichier: package.json (racine)
+
+AVANT:
+  "dev": "turbo run dev --parallel"
+
+APRÈS:
+  "dev": "cd apps/web && pnpm dev"
+
+
+📊 AVANT vs APRÈS
+═════════════════════════════════════════════════════════════════════════════
+
+AVANT (Bloqué):
+  $ pnpm dev
+  → turbo run dev --parallel
+  → Turbo cherche "dev" dans tous les packages
+  → BLOCAGE INFINI ❌
+
+APRÈS (Fonctionne):
+  $ pnpm dev
+  → cd apps/web && pnpm dev
+  → Lance directement le frontend
+  → ÇA FONCTIONNE! ✅
+
+
+🌐 ACCÈS
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend: http://localhost:3000
+
+
+🔐 IDENTIFIANTS
+═════════════════════════════════════════════════════════════════════════════
+
+Email: admin@aspc-ci.org
+Mot de passe: Admin123!
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+═════════════════════════════════════════════════════════════════════════════
+

@@ -1,0 +1,51 @@
+/* CSS pour optimiser le chargement des pages */
+
+/* Optimisation du chargement initial */
+.page-loading {
+  opacity: 0;
+  transition: opacity 100ms ease-out;
+}
+
+.page-loaded {
+  opacity: 1;
+}
+
+/* Préchargement des ressources critiques */
+.preload-critical {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimisation des transitions de page */
+.page-transition {
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optimisation des liens avec préchargement */
+.link-prefetch {
+  transition: color 75ms ease-out;
+}
+
+.link-prefetch:hover {
+  color: #FF6B35;
+}
+
+/* Optimisation des états de chargement */
+.loading-state {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

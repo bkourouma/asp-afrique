@@ -1,0 +1,161 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  passwordHash  String
+  name          String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  isActive      Boolean        @default(true)
+  lastLoginAt   DateTime?
+  auditLogs     AuditLog[]
+  refreshTokens RefreshToken[]
+  roles         UserRole[]
+
+  @@map("users")
+}
+
+model Role {
+  id    String     @id @default(cuid())
+  key   String     @unique
+  label String
+  users UserRole[]
+
+  @@map("roles")
+}
+
+model UserRole {
+  userId String
+  roleId String
+  role   Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@map("user_roles")
+}
+
+model RefreshToken {
+  id            String    @id @default(cuid())
+  userId        String
+  tokenHash     String
+  expiresAt     DateTime
+  revokedAt     DateTime?
+  createdAt     DateTime  @default(now())
+  rotatedFromId String?
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  metadata  Json?
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+model Formation {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  duration    String
+  description String
+  entity      String
+  objectives  String?
+  syllabus    String?
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("formations")
+}
+
+model ConsultingService {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  description   String
+  entity        String
+  targetSectors String?
+  ctaText       String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("consulting_services")
+}
+
+model BlogArticle {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  content     String
+  excerpt     String
+  coverImage  String?
+  category    String
+  tags        String[]
+  author      String    @default("ASPCI")
+  status      String    @default("draft")
+  publishedAt DateTime?
+  readTime    Int       @default(5)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("blog_articles")
+}
+
+model Video {
+  id              String      @id @default(cuid())
+  title           String
+  slug            String      @unique
+  description     String?
+  type            VideoType   @default(UPLOAD)
+  videoUrl        String?
+  videoId         String?
+  videoFile       String?
+  thumbnail       String?
+  duration        String?
+  durationSeconds Int?
+  category        String?
+  tags            String[]
+  author          String?
+  status          VideoStatus @default(DRAFT)
+  views           Int         @default(0)
+  subtitles       String?
+  resources       Json?
+  publishedAt     DateTime?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([category])
+  @@index([status])
+  @@index([type])
+  @@index([publishedAt])
+  @@map("videos")
+}
+
+enum VideoType {
+  YOUTUBE
+  UPLOAD
+  EXTERNAL
+}
+
+enum VideoStatus {
+  DRAFT
+  PUBLISHED
+}

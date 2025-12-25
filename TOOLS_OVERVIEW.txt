@@ -1,0 +1,222 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              🔍 OUTILS DE DÉBOGAGE DE LA PAGE DE LOGIN                    ║
+║                                                                            ║
+║                    Suite Complète avec Puppeteer                          ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+📦 FICHIERS CRÉÉS
+═════════════════════════════════════════════════════════════════════════════
+
+🚀 SCRIPTS DE DÉBOGAGE
+  ├─ debug-login.js                    Débogage basique (~30s)
+  ├─ debug-login-advanced.js           Débogage avancé (~20s)
+  ├─ debug-login-scenarios.js          Tests de scénarios (~40s)
+  ├─ debug-all.js                      Tous les tests (~2m)
+  ├─ generate-debug-report.js          Rapport HTML (~5s)
+  └─ test-login.js                     Test simple (~15s)
+
+🚀 LANCEURS INTERACTIFS
+  ├─ start-debug.ps1                   Interface PowerShell
+  ├─ start-debug.bat                   Interface Batch
+  ├─ run-debug.ps1                     Lanceur PowerShell
+  ├─ run-debug.bat                     Lanceur Batch
+  └─ check-setup.js                    Vérification config
+
+📋 CONFIGURATION
+  └─ debug-config.json                 Paramètres de test
+
+📚 DOCUMENTATION
+  ├─ LOGIN_DEBUG_TOOLS.md              Fichier principal
+  ├─ DEBUG_INDEX.md                    Index complet
+  ├─ DEBUG_LOGIN_README.md             Guide détaillé
+  ├─ QUICK_START.md                    Guide rapide (5 min)
+  ├─ TOOLS_SUMMARY.md                  Résumé des outils
+  ├─ TROUBLESHOOTING.md                Guide de dépannage
+  └─ TOOLS_OVERVIEW.txt                Ce fichier
+
+
+🎯 DÉMARRAGE RAPIDE
+═════════════════════════════════════════════════════════════════════════════
+
+1. Vérifier la configuration:
+   $ node check-setup.js
+
+2. Démarrer l'application:
+   $ cd apps/web
+   $ pnpm dev
+
+3. Lancer le débogage (dans un autre terminal):
+   $ node debug-login-scenarios.js
+
+4. Consulter les résultats:
+   - Console: Résumé en temps réel
+   - debug-report-scenarios.json: Détails complets
+
+
+📊 RAPPORTS GÉNÉRÉS
+═════════════════════════════════════════════════════════════════════════════
+
+debug-report.json
+  └─ Rapport basique (erreurs, réseau, console, performances)
+
+debug-report-advanced.json
+  └─ Rapport avancé (DOM, réseau, storage, performances)
+
+debug-report-scenarios.json
+  └─ Résultats des tests de scénarios
+
+debug-master-report.json
+  └─ Rapport maître (résumé de tous les tests)
+
+debug-report.html
+  └─ Rapport HTML interactif avec onglets
+
+
+🔍 SCÉNARIOS TESTÉS
+═════════════════════════════════════════════════════════════════════════════
+
+1. ✅ Chargement de la page
+2. ✅ Présence des éléments du formulaire
+3. ✅ Soumission du formulaire vide
+4. ✅ Email invalide
+5. ✅ Boutons de démo (Demo Chips)
+6. ✅ Erreurs console
+7. ✅ Mot de passe invalide
+8. ✅ Connexion avec identifiants valides
+
+
+🛠️ COMMANDES RAPIDES
+═════════════════════════════════════════════════════════════════════════════
+
+Vérifier la configuration:
+  $ node check-setup.js
+
+Débogage rapide (recommandé):
+  $ node debug-login-scenarios.js
+
+Débogage complet:
+  $ node debug-all.js
+
+Débogage basique:
+  $ node debug-login.js
+
+Débogage avancé:
+  $ node debug-login-advanced.js
+
+Rapport HTML:
+  $ node generate-debug-report.js
+
+Interface interactive (PowerShell):
+  $ .\start-debug.ps1
+
+Interface interactive (Batch):
+  $ start-debug.bat
+
+
+💡 CONSEILS
+═════════════════════════════════════════════════════════════════════════════
+
+1. Utilisez le mode headless=false pour voir ce qui se passe
+2. Consultez les rapports JSON pour les détails
+3. Vérifiez les logs du serveur en parallèle
+4. Testez manuellement pour confirmer les résultats
+5. Générez un rapport HTML pour une meilleure visualisation
+
+
+🐛 DÉPANNAGE RAPIDE
+═════════════════════════════════════════════════════════════════════════════
+
+"Cannot reach localhost:3000"
+  → Assurez-vous que l'application est en cours d'exécution
+  → cd apps/web && pnpm dev
+
+"Element not found"
+  → Vérifiez les sélecteurs CSS dans debug-config.json
+
+"Timeout waiting for navigation"
+  → Augmentez le timeout dans le script
+
+"Invalid credentials"
+  → Vérifiez que l'utilisateur existe dans la base de données
+  → cd packages/db && pnpm db:seed
+
+Pour plus de solutions: Consultez TROUBLESHOOTING.md
+
+
+📚 DOCUMENTATION
+═════════════════════════════════════════════════════════════════════════════
+
+Démarrage rapide (5 minutes):
+  → QUICK_START.md
+
+Guide complet:
+  → DEBUG_LOGIN_README.md
+
+Index complet:
+  → DEBUG_INDEX.md
+
+Résumé des outils:
+  → TOOLS_SUMMARY.md
+
+Guide de dépannage:
+  → TROUBLESHOOTING.md
+
+Fichier principal:
+  → LOGIN_DEBUG_TOOLS.md
+
+
+🎯 FLUX RECOMMANDÉ
+═════════════════════════════════════════════════════════════════════════════
+
+1. Vérifier la configuration
+   └─ node check-setup.js
+
+2. Démarrer l'application
+   └─ cd apps/web && pnpm dev
+
+3. Lancer le débogage rapide
+   └─ node debug-login-scenarios.js
+
+4. Consulter les résultats
+   └─ Vérifier debug-report-scenarios.json
+
+5. Débogage approfondi (si nécessaire)
+   └─ node debug-login-advanced.js
+
+6. Générer un rapport HTML
+   └─ node generate-debug-report.js
+
+7. Consulter le rapport HTML
+   └─ Ouvrir debug-report.html dans le navigateur
+
+
+✅ CHECKLIST
+═════════════════════════════════════════════════════════════════════════════
+
+- [ ] Node.js installé
+- [ ] Puppeteer installé
+- [ ] Application en cours d'exécution
+- [ ] Base de données accessible
+- [ ] Utilisateur de test existe
+- [ ] Sélecteurs CSS corrects
+- [ ] Identifiants corrects
+
+
+🚀 PRÊT À DÉBOGUER?
+═════════════════════════════════════════════════════════════════════════════
+
+Commande pour démarrer:
+  $ node debug-login-scenarios.js
+
+Ou utilisez l'interface interactive:
+  $ .\start-debug.ps1          (PowerShell)
+  $ start-debug.bat            (Batch)
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+═════════════════════════════════════════════════════════════════════════════
+
