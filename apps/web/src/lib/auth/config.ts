@@ -72,17 +72,21 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }: { token: JWT; user?: any }) {
       if (user) {
+        console.log('🔐 JWT Callback - User from API:', JSON.stringify(user))
         token.sub = user.id
         token.roles = user.roles
         token.accessToken = user.accessToken
+        console.log('🔐 JWT Callback - Token roles:', token.roles)
       }
       return token
     },
     async session({ session, token }: { session: Session; token: JWT }) {
       if (token.sub && session.user) {
-        (session.user as any).id = token.sub as string
+        console.log('📋 Session Callback - Token roles:', token.roles)
+        ;(session.user as any).id = token.sub as string
         ;(session.user as any).roles = (token.roles as string[]) || []
         ;(session as any).accessToken = token.accessToken
+        console.log('📋 Session Callback - Session user roles:', (session.user as any).roles)
       }
       return session
     }
