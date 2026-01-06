@@ -23,7 +23,10 @@ export function AuthGuard({ children, requiredRole }: AuthGuardProps) {
 
     if (requiredRole) {
       const user = session.user as any;
-      if (!user?.roles?.includes(requiredRole)) {
+      const hasRole = user?.roles?.some((role: string) =>
+        role.toLowerCase() === requiredRole.toLowerCase()
+      );
+      if (!hasRole) {
         router.push("/login");
         return;
       }
@@ -44,7 +47,10 @@ export function AuthGuard({ children, requiredRole }: AuthGuardProps) {
 
   if (requiredRole) {
     const user = session.user as any;
-    if (!user?.roles?.includes(requiredRole)) {
+    const hasRole = user?.roles?.some((role: string) =>
+      role.toLowerCase() === requiredRole.toLowerCase()
+    );
+    if (!hasRole) {
       return null;
     }
   }
