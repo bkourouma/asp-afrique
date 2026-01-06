@@ -116,6 +116,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.15
         version: 4.1.15
+      '@types/nodemailer':
+        specifier: ^7.0.3
+        version: 7.0.3
       bcryptjs:
         specifier: ^3.0.2
         version: 3.0.2
@@ -139,7 +142,10 @@ importers:
         version: 15.5.9(@babel/core@7.28.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-auth:
         specifier: ^4.24.5
-        version: 4.24.11(next@15.5.9(@babel/core@7.28.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 4.24.11(next@15.5.9(@babel/core@7.28.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nodemailer@7.0.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      nodemailer:
+        specifier: ^7.0.10
+        version: 7.0.10
       react:
         specifier: ^18
         version: 18.3.1
@@ -9149,7 +9155,7 @@ snapshots:
 
   netmask@2.0.2: {}
 
-  next-auth@4.24.11(next@15.5.9(@babel/core@7.28.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next-auth@4.24.11(next@15.5.9(@babel/core@7.28.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nodemailer@7.0.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.28.4
       '@panva/hkdf': 1.2.1
@@ -9163,6 +9169,8 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       uuid: 8.3.2
+    optionalDependencies:
+      nodemailer: 7.0.10
 
   next@15.5.9(@babel/core@7.28.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
