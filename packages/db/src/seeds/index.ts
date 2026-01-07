@@ -1,6 +1,7 @@
 import { prisma } from '../index'
 import { seedDemoContent } from './002_demo_content_placeholders'
 import { seedConsultingServices } from './003_consulting_services'
+import { seedFaqsAndBlog } from './004_faq_blog'
 
 async function main() {
   console.log('🌱 Starting database seeding...')
@@ -63,6 +64,9 @@ async function main() {
 
   // Seed consulting services
   await seedConsultingServices()
+
+  // Seed FAQs and Blog Articles
+  await seedFaqsAndBlog()
 
   console.log('🎉 Database seeding completed!')
 }

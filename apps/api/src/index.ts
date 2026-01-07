@@ -15,6 +15,7 @@ import consultingRoutes from './routes/consulting.js'
 import uploadRoutes from './routes/upload.js'
 import blogRoutes from './routes/blog.js'
 import videoRoutes from './routes/videos.js'
+import faqRoutes from './routes/faq.js'
 import { authenticate } from './middleware/auth.js'
 
 dotenv.config()
@@ -77,6 +78,7 @@ app.register(consultingRoutes, { prefix: '/api/v1/consulting' })
 app.register(uploadRoutes, { prefix: '/api/v1/upload' })
 app.register(blogRoutes, { prefix: '/api/v1/blog' })
 app.register(videoRoutes, { prefix: '/api/v1/videos' })
+app.register(faqRoutes, { prefix: '/api/v1/faq' })
 
 // Error handler
 app.setErrorHandler((error, request, reply) => {
