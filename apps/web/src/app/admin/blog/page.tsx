@@ -54,7 +54,8 @@ export default function AdminBlogPage() {
   const fetchArticles = async () => {
     try {
       // Récupérer tous les articles (publié et brouillon) pour l'admin
-      const data = await apiGet<BlogArticle[]>("/api/v1/blog");
+      // Utiliser status=all pour récupérer tous les articles, pas seulement les publiés
+      const data = await apiGet<BlogArticle[]>("/api/v1/blog?status=all");
       setArticles(data);
     } catch (error) {
       console.error("Failed to fetch blog articles:", error);
@@ -128,6 +129,19 @@ export default function AdminBlogPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validation
+    if (!formData.title || !formData.content || !formData.excerpt || !formData.category) {
+      alert("Veuillez remplir tous les champs obligatoires (Titre, Contenu, Résumé, Catégorie)");
+      return;
+    }
+
+    // Vérifier que le contenu n'est pas vide (même après suppression du HTML)
+    const contentText = formData.content.replace(/<[^>]*>/g, '').trim();
+    if (!contentText) {
+      alert("Le contenu de l'article ne peut pas être vide");
+      return;
+    }
+
     try {
       if (editingArticle) {
         await apiPut(`/api/v1/blog/${editingArticle.id}`, formData);
@@ -140,6 +154,8 @@ export default function AdminBlogPage() {
       resetForm();
     } catch (error) {
       console.error("Failed to save blog article:", error);
+      const errorMessage = error instanceof Error ? error.message : "Erreur lors de la sauvegarde de l'article";
+      alert(`Erreur: ${errorMessage}`);
     }
   };
 

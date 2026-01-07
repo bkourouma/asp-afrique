@@ -26,13 +26,16 @@ const blogRoutes: FastifyPluginAsync = async (fastify) => {
       const { status, category, search } = request.query as any;
       
       const where: any = {};
-      
-      // Si status n'est pas spécifié, ne montrer que les articles publiés (pour le public)
-      if (status) {
+
+      // Si status='all', montrer tous les articles (pour l'admin)
+      // Si status='published' ou 'draft', filtrer par ce statut
+      // Sinon (par défaut), ne montrer que les articles publiés (pour le public)
+      if (status && status !== 'all') {
         where.status = status;
-      } else {
+      } else if (!status) {
         where.status = 'published';
       }
+      // Si status='all', on ne met pas de filtre sur le statut
       
       if (category) {
         where.category = category;
