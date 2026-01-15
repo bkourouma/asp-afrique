@@ -1,0 +1,92 @@
+{
+  "client": "ASP Security Consulting",
+  "website": "https://aspsecurityconsulting.com",
+  "date_creation": "2025-01-13",
+  "blog_posts": [
+    {
+      "id": 1,
+      "titre": "Les 5 compétences essentielles d'un Agent de Protection Rapprochée en Afrique",
+      "slug": "competences-agent-protection-rapprochee-afrique",
+      "categorie": "Formation",
+      "tags": ["APR", "protection rapprochée", "carrière sécurité", "formation"],
+      "angle": "Article pratique détaillant les aptitudes techniques et comportementales indispensables : évaluation des risques, discrétion, gestion de foule, premiers secours, communication. Mise en avant de l'approche pédagogique ivoiro-canadienne d'ASP.",
+      "objectif": "Attirer les candidats potentiels à la formation APR et positionner ASP comme référence.",
+      "cible": "Jeunes professionnels cherchant une carrière dans la sécurité",
+      "mots_cles_seo": ["formation agent protection rapprochée Abidjan", "devenir garde du corps Côte d'Ivoire", "école sécurité Afrique"],
+      "longueur_estimee": "1200-1500 mots",
+      "type_contenu": "Guide pratique"
+    },
+    {
+      "id": 2,
+      "titre": "Sûreté maritime au Port d'Abidjan : enjeux et solutions pour 2025",
+      "slug": "surete-maritime-port-abidjan-enjeux-2025",
+      "categorie": "Expertise sectorielle",
+      "tags": ["sûreté maritime", "port", "ISPS Code", "Abidjan", "logistique"],
+      "angle": "Analyse des défis spécifiques du corridor maritime ouest-africain : piraterie, conformité ISPS Code, protection des infrastructures portuaires. Présentation des certifications et formations adaptées.",
+      "objectif": "Démontrer l'expertise en sûreté maritime auprès des entreprises portuaires et logistiques.",
+      "cible": "Responsables sécurité des entreprises portuaires et maritimes",
+      "mots_cles_seo": ["sûreté maritime Côte d'Ivoire", "formation ISPS Code Abidjan", "sécurité portuaire Afrique de l'Ouest"],
+      "longueur_estimee": "1500-2000 mots",
+      "type_contenu": "Article d'expertise"
+    },
+    {
+      "id": 3,
+      "titre": "Comment choisir une école de sécurité professionnelle en Côte d'Ivoire : 7 critères décisifs",
+      "slug": "choisir-ecole-securite-professionnelle-cote-ivoire",
+      "categorie": "Guide",
+      "tags": ["choix formation", "école sécurité", "critères", "Côte d'Ivoire"],
+      "angle": "Guide comparatif objectif incluant : accréditations internationales, taux de placement, qualité des formateurs, équipements, partenariats institutionnels, reconnaissance des diplômes.",
+      "objectif": "SEO local + conversion des visiteurs en phase de décision.",
+      "cible": "Personnes en recherche de formation en sécurité",
+      "mots_cles_seo": ["meilleure école sécurité Abidjan", "formation agent sécurité Côte d'Ivoire", "école sécurité privée Afrique"],
+      "longueur_estimee": "1000-1200 mots",
+      "type_contenu": "Guide comparatif"
+    },
+    {
+      "id": 4,
+      "titre": "Protection des données personnelles en entreprise : ce que dit la loi ivoirienne",
+      "slug": "protection-donnees-personnelles-loi-ivoirienne-entreprise",
+      "categorie": "Réglementation",
+      "tags": ["RGPD", "données personnelles", "ARTCI", "conformité", "audit"],
+      "angle": "Vulgarisation de la réglementation ARTCI sur les données personnelles, obligations des entreprises, sanctions encourues, et comment ASP peut accompagner la mise en conformité via des audits.",
+      "objectif": "Valoriser le service 'Protection des données à caractère personnel' et toucher les DSI/DRH.",
+      "cible": "Directeurs SI, DRH, responsables conformité",
+      "mots_cles_seo": ["loi protection données Côte d'Ivoire", "ARTCI données personnelles", "audit conformité données Abidjan"],
+      "longueur_estimee": "1200-1500 mots",
+      "type_contenu": "Article juridique vulgarisé"
+    },
+    {
+      "id": 5,
+      "titre": "Sécurité minière en Afrique de l'Ouest : retour d'expérience de nos formations avec Tongon et Newcrest",
+      "slug": "securite-miniere-afrique-ouest-tongon-newcrest",
+      "categorie": "Étude de cas",
+      "tags": ["mines", "sécurité industrielle", "Tongon", "Newcrest", "risques"],
+      "angle": "Étude de cas sur les problématiques spécifiques des sites miniers : gestion des accès, risques industriels, coordination avec les forces de l'ordre, formation du personnel local.",
+      "objectif": "Crédibiliser l'expertise sectorielle auprès des compagnies minières.",
+      "cible": "Responsables sécurité des compagnies minières",
+      "mots_cles_seo": ["sécurité mines Afrique", "formation sécurité minière Côte d'Ivoire", "risques industriels mines"],
+      "longueur_estimee": "1500-1800 mots",
+      "type_contenu": "Étude de cas",
+      "note": "Obtenir l'autorisation des clients avant publication"
+    },
+    {
+      "id": 6,
+      "titre": "De la formation à l'emploi : parcours de 3 diplômés ASP qui ont réussi",
+      "slug": "temoignages-diplomes-asp-reussite-emploi",
+      "categorie": "Témoignages",
+      "tags": ["témoignages", "emploi", "carrière", "success story", "diplômés"],
+      "angle": "Témoignages de professionnels formés chez ASP, aujourd'hui en poste chez Bolloré, G4S ou BCEAO. Leur parcours, les défis relevés, conseils aux futurs étudiants.",
+      "objectif": "Humaniser la marque, rassurer les prospects sur les débouchés (98% de réussite → preuves concrètes).",
+      "cible": "Candidats potentiels hésitants",
+      "mots_cles_seo": ["emploi agent sécurité Abidjan", "débouchés formation sécurité", "travailler sécurité Côte d'Ivoire"],
+      "longueur_estimee": "1000-1200 mots",
+      "type_contenu": "Témoignages / Storytelling",
+      "format_suggere": "Vidéo + transcription écrite"
+    }
+  ],
+  "recommandations": {
+    "calendrier_publication": "Alterner entre articles techniques (2, 4, 5) et articles d'acquisition/conversion (1, 3, 6)",
+    "frequence_suggeree": "2 articles par mois",
+    "priorite": [3, 1, 6, 2, 4, 5]
+  }
+}

@@ -26,3 +26,4 @@ sudo certbot --nginx -d asp-afrique.com -d www.asp-afrique.com -d aspsecuritycon
 
 That's it! Both domains will work after this.
 
+

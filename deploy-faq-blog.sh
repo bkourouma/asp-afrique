@@ -42,3 +42,4 @@ pm2 status
 
 echo "🎉 FAQ and Blog deployment finished!"
 
+

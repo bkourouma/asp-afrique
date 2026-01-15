@@ -49,3 +49,4 @@ echo "🧪 Testing application..."
 sleep 2
 curl -I http://localhost:3000 2>/dev/null | head -1 || echo "   ⚠️  Application may still be starting"
 
+

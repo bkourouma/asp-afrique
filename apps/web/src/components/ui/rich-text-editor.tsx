@@ -16,13 +16,17 @@ export function RichTextEditor({ value, onChange, placeholder }: RichTextEditorP
   const execCommand = useCallback((command: string, value: string | null = null) => {
     document.execCommand(command, false, value || undefined);
     if (editorRef.current) {
-      onChange(editorRef.current.innerHTML);
+      // S'assurer que le contenu est toujours une chaîne valide
+      const content = editorRef.current.innerHTML || '';
+      onChange(content);
     }
   }, [onChange]);
 
   const handleInput = useCallback(() => {
     if (editorRef.current) {
-      onChange(editorRef.current.innerHTML);
+      // S'assurer que le contenu est toujours une chaîne valide
+      const content = editorRef.current.innerHTML || '';
+      onChange(content);
     }
   }, [onChange]);
 
@@ -41,8 +45,12 @@ export function RichTextEditor({ value, onChange, placeholder }: RichTextEditorP
   }, [execCommand]);
 
   React.useEffect(() => {
-    if (editorRef.current && editorRef.current.innerHTML !== value) {
-      editorRef.current.innerHTML = value;
+    if (editorRef.current) {
+      const currentContent = editorRef.current.innerHTML || '';
+      const newValue = value || '';
+      if (currentContent !== newValue) {
+        editorRef.current.innerHTML = newValue;
+      }
     }
   }, [value]);
 

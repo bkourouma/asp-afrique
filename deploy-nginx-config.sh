@@ -51,3 +51,4 @@ echo "🧪 Testing domains..."
 curl -I https://asp-afrique.com 2>/dev/null | head -1 || echo "   ⚠️  Could not test asp-afrique.com"
 curl -I https://aspsecurityconsulting.com 2>/dev/null | head -1 || echo "   ⚠️  Could not test aspsecurityconsulting.com (may need SSL update)"
 
+

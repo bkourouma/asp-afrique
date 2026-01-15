@@ -1,8 +1,16 @@
 // Use relative URLs in production (Nginx will proxy), absolute URLs in development
+// This function is called at runtime to get the API base URL
 const getApiBaseUrl = () => {
-  // If explicitly set via env var, use it (but normalize to remove trailing /api)
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    let apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // Check both runtime and build-time env vars
+  // Next.js replaces process.env.NEXT_PUBLIC_* at build time, so we need to check both
+  const envApiUrl = typeof window !== 'undefined' 
+    ? (window as any).__NEXT_DATA__?.env?.NEXT_PUBLIC_API_URL || (process.env as any).NEXT_PUBLIC_API_URL
+    : (process.env as any).NEXT_PUBLIC_API_URL;
+  
+  // Normalize and validate the API URL - handle string "undefined" from build-time replacement
+  const apiUrlStr = envApiUrl ? String(envApiUrl).trim() : '';
+  if (apiUrlStr && apiUrlStr !== 'undefined' && apiUrlStr !== 'null' && apiUrlStr !== '') {
+    let apiUrl = apiUrlStr;
     // Remove trailing /api if present, since endpoints already include /api/v1/...
     if (apiUrl.endsWith('/api')) {
       apiUrl = apiUrl.slice(0, -4); // Remove '/api'
@@ -13,14 +21,23 @@ const getApiBaseUrl = () => {
     }
     return apiUrl;
   }
-  // In production, use relative URL (Nginx proxies /api to Fastify API)
-  if (process.env.NODE_ENV === 'production') {
-    return ''; // Empty string = relative URL
+  
+  // In production (when not localhost), use relative URL (Nginx proxies /api to Fastify API)
+  if (typeof window !== 'undefined') {
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    if (isProduction) {
+      return ''; // Empty string = relative URL
+    }
+  } else if (process.env.NODE_ENV === 'production') {
+    return ''; // Empty string = relative URL for server-side
   }
+  
   // In development, use localhost
   return 'http://localhost:3002';
 };
 
+// Call the function at runtime, not build time
+// This ensures we get the correct value even if env var was undefined at build time
 const API_BASE_URL = getApiBaseUrl();
 
 export const API_URL = API_BASE_URL;
