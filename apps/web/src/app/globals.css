@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import '../styles/performance.css';
+@import '../styles/instant-performance.css';
+@import '../styles/preload-optimization.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fix for admin interface scroll issues */
+.admin-interface {
+  overflow: hidden;
+}
+
+.admin-interface main {
+  overflow: hidden;
+}
+
+.admin-interface .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.admin-interface .overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-interface .overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.admin-interface .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.admin-interface .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Performance optimizations for admin navigation */
+.admin-interface {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.admin-interface * {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth transitions for admin pages */
+.admin-page-transition {
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.admin-page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.admin-page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optimize sidebar performance */
+.admin-sidebar {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Loading states optimization */
+.admin-loading {
+  contain: layout style paint;
+}
+
+/* ============================================================================
+   ROOT VARIABLES - ASPCI Design System
+   ============================================================================ */
+
+:root {
+  /* Light Mode Colors */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* ASPCI Brand Colors */
+  --color-primary: #0A2540;           /* Navy Blue */
+  --color-accent-1: #FF6B35;          /* Orange */
+  --color-accent-2: #00D9FF;          /* Cyan */
+  --color-accent-3: #FFD23F;          /* Yellow */
+
+  /* Neutral Colors */
+  --color-neutral-light: #F8F9FA;
+  --color-neutral-dark: #1A1F36;
+
+  /* Text Colors */
+  --color-text-primary: #0A2540;
+  --color-text-secondary: #64748B;
+
+  /* Background Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8F9FA;
+
+  /* Border & Shadow */
+  --color-border: #E2E8F0;
+  --color-shadow: rgba(10, 37, 64, 0.1);
+
+  /* Glass Effect */
+  --color-glass-bg: rgba(255, 255, 255, 0.1);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+
+  /* Radix UI Variables */
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --primary: 210 100% 15%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 47.4% 11.2%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 47.4% 11.2%;
+  --radius: 0.5rem;
+
+  /* Font Variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ============================================================================
+   3D TRANSFORMS & PERSPECTIVE
+   ============================================================================ */
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* ============================================================================
+   GLASSMORPHISM EFFECTS
+   ============================================================================ */
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
+/* Gradient Shift Animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Shine Effect Animation */
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.shine-effect {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -200% center;
+  transition: background-position 0.5s ease;
+}
+
+.shine-effect:hover {
+  animation: shine 1.5s ease-in-out;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Glow Animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Fade In Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Slide In Animation */
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.6s ease-out;
+}
+
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --color-bg-secondary: #1a1a1a;
+    --color-border: #333333;
+  }
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 600;
+}
+
+h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1em;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent-2);
+}
+
+/* ============================================================================
+   CUSTOM SCROLLBAR
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-1);
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Glass Morphism */
+.glass {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+}
+
+.gradient-bg {
+  background: linear-gradient(-45deg, var(--color-primary), var(--color-accent-2), var(--color-accent-1), var(--color-accent-3));
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.particle {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================================================
+   BUTTON STYLES
+   ============================================================================ */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ============================================================================
+   CARD STYLES
+   ============================================================================ */
+
+.card-hover {
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px var(--color-shadow);
+}
+
+/* ============================================================================
+   ASPCI COLOR UTILITIES
+   ============================================================================ */
+
+.text-primary {
+  color: var(--color-primary) !important;
+}
+
+.text-accent-1 {
+  color: var(--color-accent-1) !important;
+}
+
+.text-accent-2 {
+  color: var(--color-accent-2) !important;
+}
+
+.text-accent-3 {
+  color: var(--color-accent-3) !important;
+}
+
+.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-accent-1 {
+  background-color: var(--color-accent-1) !important;
+}
+
+.bg-accent-2 {
+  background-color: var(--color-accent-2) !important;
+}
+
+.bg-accent-3 {
+  background-color: var(--color-accent-3) !important;
+}
+
+.border-primary {
+  border-color: var(--color-primary) !important;
+}
+
+.border-accent-1 {
+  border-color: var(--color-accent-1) !important;
+}
+
+.border-accent-2 {
+  border-color: var(--color-accent-2) !important;
+}
+
+.border-accent-3 {
+  border-color: var(--color-accent-3) !important;
+}
+
+/* ============================================================================
+   LOADING & COUNTER ANIMATIONS
+   ============================================================================ */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.counter {
+  animation: count-up 0.6s ease-out forwards;
+}
+
+/* ============================================================================
+   SCROLL PROGRESS BAR
+   ============================================================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2));
+  transform-origin: left;
+  z-index: 1000;
+}
+
+/* ============================================================================
+   RESPONSIVE UTILITIES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent-2);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   ADMIN INTERFACE STYLES
+   ============================================================================ */
+
+.admin-interface h1 {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+}
+
+.admin-interface h2 {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+}
+
+.admin-interface h3 {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+.admin-interface .text-sm {
+  font-size: 0.875rem !important;
+}
+
+.admin-interface .text-xs {
+  font-size: 0.75rem !important;
+}
+
+/* ============================================================================
+   REDUCED MOTION FOR ACCESSIBILITY
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

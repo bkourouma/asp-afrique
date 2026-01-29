@@ -1,0 +1,59 @@
+{
+  "application": {
+    "url": "http://localhost:3000",
+    "loginPath": "/login",
+    "adminPath": "/admin",
+    "timeout": 30000
+  },
+  "credentials": {
+    "email": "admin@aspc-ci.org",
+    "password": "Admin123!"
+  },
+  "testCredentials": [
+    {
+      "email": "admin@aspc-ci.org",
+      "password": "Admin123!",
+      "description": "Admin account"
+    },
+    {
+      "email": "invalid@example.com",
+      "password": "WrongPassword123!",
+      "description": "Invalid credentials"
+    }
+  ],
+  "selectors": {
+    "emailInput": "input[type=\"email\"]",
+    "passwordInput": "input[type=\"password\"]",
+    "submitButton": "button[type=\"submit\"]",
+    "form": "form",
+    "errorMessages": ".text-red-600",
+    "alerts": "[role=\"alert\"]",
+    "demoButtons": "button:not([type=\"submit\"])"
+  },
+  "browser": {
+    "headless": false,
+    "defaultViewport": null,
+    "args": [
+      "--start-maximized",
+      "--disable-blink-features=AutomationControlled",
+      "--disable-dev-shm-usage"
+    ]
+  },
+  "performance": {
+    "maxLoadTime": 3000,
+    "maxDOMContentLoaded": 2000,
+    "maxFirstContentfulPaint": 1500,
+    "maxJSHeapSize": 52428800
+  },
+  "logging": {
+    "verbose": true,
+    "captureScreenshots": false,
+    "screenshotPath": "./screenshots"
+  },
+  "reports": {
+    "generateJSON": true,
+    "generateHTML": true,
+    "outputPath": "./"
+  }
+}
+

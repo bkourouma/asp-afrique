@@ -1,0 +1,129 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                  ✅ POURQUOI TURBO BLOQUE ✅                            ║
+║                                                                            ║
+║              Explication Détaillée et Solution                            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 VOTRE QUESTION
+═════════════════════════════════════════════════════════════════════════════
+
+"Mais pourquoi l'application ne démarre pas avec pnpm dev?"
+
+Vous aviez ce message:
+  WARNING  No locally installed `turbo` found in your repository...
+  turbo 2.5.8
+  • Running dev
+  • Remote caching disabled
+
+Et puis... RIEN. Blocage infini. ❌
+
+
+❌ LE PROBLÈME
+═════════════════════════════════════════════════════════════════════════════
+
+Le script "dev" dans package.json utilisait:
+  "dev": "turbo run dev --parallel"
+
+Cela signifie: "Turbo, lance la tâche 'dev' de TOUS les packages en parallèle"
+
+Mais voici le problème:
+
+1. apps/web/package.json a:
+   "dev": "next dev --turbopack" ✅
+
+2. apps/api/package.json N'A PAS:
+   "dev": ... ❌
+
+3. packages/db/package.json N'A PAS:
+   "dev": ... ❌
+
+Turbo attendait que TOUS les packages aient un script "dev".
+Comme ce n'était pas le cas, il restait bloqué en attente. ❌
+
+
+🔍 POURQUOI TURBO BLOQUE?
+═════════════════════════════════════════════════════════════════════════════
+
+Turbo est un "task runner" pour les monorepos. Quand vous dites:
+  turbo run dev --parallel
+
+Turbo fait ceci:
+
+1. Cherche tous les packages avec un script "dev"
+2. Lance-les tous en parallèle
+3. Attend que TOUS se terminent
+
+Mais dans votre cas:
+- apps/web a "dev" ✅
+- apps/api n'a pas "dev" ❌
+- packages/db n'a pas "dev" ❌
+
+Turbo ne peut pas lancer "dev" sur apps/api et packages/db.
+Il reste donc bloqué en attente. ❌
+
+
+✅ LA SOLUTION
+═════════════════════════════════════════════════════════════════════════════
+
+Au lieu de dire à Turbo de lancer "dev" sur TOUS les packages,
+on lance directement le frontend:
+
+AVANT:
+  "dev": "turbo run dev --parallel"
+
+APRÈS:
+  "dev": "cd apps/web && pnpm dev"
+
+Maintenant, on lance directement le frontend sans passer par Turbo.
+Pas de blocage! ✅
+
+
+📊 COMPARAISON
+═════════════════════════════════════════════════════════════════════════════
+
+AVANT (Bloqué):
+  $ pnpm dev
+  → turbo run dev --parallel
+  → Turbo cherche "dev" dans tous les packages
+  → apps/web: ✅ trouvé
+  → apps/api: ❌ pas trouvé
+  → packages/db: ❌ pas trouvé
+  → BLOCAGE INFINI ❌
+
+APRÈS (Fonctionne):
+  $ pnpm dev
+  → cd apps/web && pnpm dev
+  → Lance directement le frontend
+  → Pas de Turbo
+  → Pas de blocage ✅
+
+
+🔧 FICHIERS MODIFIÉS
+═════════════════════════════════════════════════════════════════════════════
+
+package.json (racine):
+  "dev": "cd apps/web && pnpm dev"
+
+
+🎉 RÉSULTAT
+═════════════════════════════════════════════════════════════════════════════
+
+Maintenant:
+  $ pnpm dev
+
+Lance correctement le frontend! ✅
+
+
+🌐 ACCÈS
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend: http://localhost:3000
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+═════════════════════════════════════════════════════════════════════════════
+

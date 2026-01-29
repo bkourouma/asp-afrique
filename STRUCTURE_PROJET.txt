@@ -1,0 +1,157 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              📁 STRUCTURE DU PROJET 📁                                   ║
+║                                                                            ║
+║  Vue d'ensemble de la structure du projet                                 ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+📁 STRUCTURE GÉNÉRALE
+═════════════════════════════════════════════════════════════════════════════
+
+AspCIWeb/
+├── apps/
+│   ├── web/                    ← Frontend (Next.js)
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── (auth)/
+│   │   │   │   │   └── login/
+│   │   │   │   │       └── page.tsx ✅ MODIFIÉ
+│   │   │   │   └── ...
+│   │   │   └── ...
+│   │   ├── next.config.ts      ✅ MODIFIÉ
+│   │   ├── package.json
+│   │   └── pnpm-lock.yaml
+│   │
+│   └── api/                    ← Backend (Fastify)
+│       ├── src/
+│       │   └── (vide)
+│       ├── package.json
+│       └── pnpm-lock.yaml
+│
+├── packages/
+│   └── db/                     ← Base de données (Prisma)
+│       ├── prisma/
+│       │   └── schema.prisma
+│       ├── package.json
+│       └── pnpm-lock.yaml
+│
+├── package.json                ✅ MODIFIÉ
+├── pnpm-lock.yaml
+├── turbo.json
+└── ...
+
+
+🚀 SCRIPTS DE DÉMARRAGE
+═════════════════════════════════════════════════════════════════════════════
+
+start-frontend-backend.bat
+  → Version Batch standard
+  → Crée deux fenêtres séparées
+
+start-frontend-backend-simple.bat ⭐ RECOMMANDÉ
+  → Version Batch simplifiée
+  → Crée deux fenêtres séparées
+  → ✅ TESTÉ ET VALIDÉ
+
+start-frontend-backend.ps1
+  → Version PowerShell
+  → Crée deux fenêtres séparées
+  → Avec couleurs et formatage
+
+
+📚 DOCUMENTATION
+═════════════════════════════════════════════════════════════════════════════
+
+BIENVENUE.txt
+  → Fichier de bienvenue
+
+GUIDE_RAPIDE_UTILISATION.txt
+  → Guide d'utilisation rapide (30 secondes)
+
+DOCUMENTATION_COMPLETE.txt
+  → Documentation complète
+
+UTILISER_SCRIPTS_FRONTEND_BACKEND.txt
+  → Guide complet d'utilisation des scripts
+
+COMMANDES_DISPONIBLES.txt
+  → Liste de toutes les commandes
+
+PROCHAINES_ETAPES.txt
+  → Ce qu'il faut faire maintenant
+
+MODIFICATIONS_APPORTEES.txt
+  → Liste des modifications apportées
+
+STRUCTURE_PROJET.txt
+  → Structure du projet (ce fichier)
+
+INDEX_FICHIERS_CREES.txt
+  → Index de tous les fichiers créés
+
+RESUME_FINAL.txt
+  → Résumé final
+
+RESUME_COMPLET_SESSION.txt
+  → Résumé complet de la session
+
+CHECKLIST_FINAL.txt
+  → Checklist final
+
+RESUME_VISUEL_FINAL.txt
+  → Résumé visuel final
+
+
+🔧 TECHNOLOGIES UTILISÉES
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend:
+  - Next.js 15.5.5
+  - React 19.1.0
+  - TypeScript
+  - Turbopack
+
+Backend:
+  - Fastify (à configurer)
+  - Node.js
+
+Base de données:
+  - Prisma
+  - (Base de données à déterminer)
+
+Authentification:
+  - NextAuth.js 4.24.11
+
+Package Manager:
+  - pnpm 10.14.0
+
+Monorepo:
+  - Turborepo
+
+
+📊 PORTS
+═════════════════════════════════════════════════════════════════════════════
+
+Frontend (Next.js):
+  ✓ Port: 3001
+  ✓ Accès Local: http://localhost:3001
+  ✓ Accès Network: http://192.168.1.70:3001
+
+Backend (Fastify):
+  ? Port: À déterminer (probablement 3000 ou 5000)
+  ? Accès: À déterminer
+
+
+🔐 IDENTIFIANTS DE TEST
+═════════════════════════════════════════════════════════════════════════════
+
+Email: admin@aspc-ci.org
+Mot de passe: Admin123!
+
+
+═════════════════════════════════════════════════════════════════════════════
+Dernière mise à jour: 2024-01-15
+═════════════════════════════════════════════════════════════════════════════
+

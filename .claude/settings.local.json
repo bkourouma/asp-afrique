@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(ssh:*)",
+      "Bash(scp aspsecurityconsulting.com.nginx.conf fix-nextauth-routing.sh deployer@147.93.44.169:/tmp/)",
+      "Bash(scp:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Read(//d/ONEDRIVE/APPS/VPS SETTINGS/**)",
+      "Bash(wc:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)"
+    ]
+  }
+}

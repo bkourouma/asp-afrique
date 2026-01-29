@@ -1,0 +1,47 @@
+{
+  "name": "AspCIWeb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "turbo run dev",
+    "dev:all": "turbo run dev",
+    "dev:web": "cd apps/web && pnpm dev",
+    "dev:api": "cd apps/api && pnpm dev",
+    "build": "turbo run build",
+    "start": "cd apps/web && pnpm start",
+    "db:generate": "cd packages/db && pnpm prisma generate",
+    "db:migrate": "cd packages/db && pnpm prisma migrate dev",
+    "db:seed": "cd packages/db && pnpm db:seed",
+    "db:studio": "cd packages/db && pnpm prisma studio",
+    "debug:check": "node check-setup.js",
+    "debug:basic": "node debug-login.js",
+    "debug:advanced": "node debug-login-advanced.js",
+    "debug:scenarios": "node debug-login-scenarios.js",
+    "debug:all": "node debug-all.js",
+    "debug:report": "node generate-debug-report.js",
+    "debug:test": "node test-login.js",
+    "debug:start": "node start-debug.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "@specifyapp/cli": "^1.2.0",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "puppeteer": "^24.25.0",
+    "turbo": "^2.5.8"
+  },
+  "dependencies": {
+    "puppeteer-core": "^24.25.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "18.3.12",
+      "@types/react-dom": "18.3.1"
+    }
+  }
+}
