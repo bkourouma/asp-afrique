@@ -60,37 +60,27 @@ export function YouTubeIntegration({ video, onVideoDataUpdate }: YouTubeIntegrat
     setError(null);
 
     try {
-      // En production, vous devriez utiliser l'API YouTube Data v3
-      // Pour le développement, on simule la récupération des données
-      const response = await fetch(`/api/v1/videos/youtube-info?id=${id}`);
-      
-      if (response.ok) {
-        const info = await response.json();
-        setVideoInfo(info);
-        
-        // Mettre à jour les données du formulaire (sans auto-remplir la description)
-        onVideoDataUpdate({
-          videoUrl: youtubeUrl,
-          videoId: id,
-          title: info.title || '',
-          thumbnail: info.thumbnail || getYouTubeThumbnail(id),
-          duration: info.duration || '',
-          durationSeconds: info.durationSeconds || 0,
-          author: info.author || ''
-        });
-      } else {
-        throw new Error('Impossible de récupérer les informations de la vidéo');
-      }
-    } catch (err) {
-      console.error('Erreur lors du chargement des informations YouTube:', err);
-      setError('Impossible de récupérer les informations de la vidéo YouTube');
-      
-      // Fallback : utiliser les données de base
+      // Utiliser directement les données de base sans appel API
+      // L'ID YouTube et le thumbnail sont suffisants
+      const thumbnail = getYouTubeThumbnail(id);
+
       onVideoDataUpdate({
         videoUrl: youtubeUrl,
         videoId: id,
-        thumbnail: getYouTubeThumbnail(id)
+        thumbnail: thumbnail
       });
+
+      setVideoInfo({
+        id,
+        thumbnail,
+        title: '',
+        duration: '',
+        durationSeconds: 0,
+        author: ''
+      });
+    } catch (err) {
+      console.error('Erreur lors du chargement des informations YouTube:', err);
+      setError('Erreur lors du traitement de la vidéo YouTube');
     } finally {
       setLoading(false);
     }

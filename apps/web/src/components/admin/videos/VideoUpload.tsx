@@ -294,10 +294,16 @@ export function VideoUpload({ video, onVideoDataUpdate }: VideoUploadProps) {
               )}
 
               {!uploading && selectedFile && (
-                <Button onClick={handleUpload} className="w-full">
-                  <Upload className="h-4 w-4 mr-2" />
-                  Uploader la vidéo
-                </Button>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-700">
+                    <AlertCircle className="h-4 w-4" />
+                    <span className="text-sm">L'upload direct de vidéos n'est pas encore disponible. Utilisez l'intégration YouTube pour ajouter des vidéos.</span>
+                  </div>
+                  <Button onClick={handleUpload} className="w-full" disabled>
+                    <Upload className="h-4 w-4 mr-2" />
+                    Upload direct (bientôt disponible)
+                  </Button>
+                </div>
               )}
             </div>
           )}

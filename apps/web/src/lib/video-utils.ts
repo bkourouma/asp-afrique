@@ -48,9 +48,17 @@ export function getYouTubeEmbedUrl(videoId: string, autoplay = false): string {
 
 /**
  * Génère l'URL de thumbnail YouTube
+ * Note: mqdefault (medium) est plus fiable que highdefault car disponible pour toutes les vidéos
  */
-export function getYouTubeThumbnail(videoId: string, quality: 'default' | 'medium' | 'high' | 'standard' | 'maxres' = 'high'): string {
-  return `https://img.youtube.com/vi/${videoId}/${quality === 'maxres' ? 'maxresdefault' : quality}default.jpg`
+export function getYouTubeThumbnail(videoId: string, quality: 'default' | 'medium' | 'high' | 'standard' | 'maxres' = 'medium'): string {
+  const qualityMap: Record<string, string> = {
+    'default': 'default',
+    'medium': 'mqdefault',
+    'high': 'hqdefault',
+    'standard': 'sddefault',
+    'maxres': 'maxresdefault'
+  }
+  return `https://img.youtube.com/vi/${videoId}/${qualityMap[quality]}.jpg`
 }
 
 /**
