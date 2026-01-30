@@ -76,9 +76,18 @@ export function FileUpload({
       const formData = new FormData();
       formData.append('file', file);
 
-      // Utiliser la route API Next.js qui gère l'authentification côté serveur
+      // Récupérer le token d'accès depuis la session
+      const accessToken = (session as any)?.accessToken;
+      if (!accessToken) {
+        throw new Error('Token d\'accès non disponible. Veuillez vous reconnecter.');
+      }
+
+      // Envoyer avec le token JWT pour l'authentification Fastify
       const response = await fetch('/api/v1/upload', {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        },
         body: formData
       });
 
